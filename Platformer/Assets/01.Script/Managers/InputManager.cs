@@ -19,6 +19,11 @@ public class InputManager : MonoSingleTon<InputManager>
         ClampRun = clampRun;
     }
 
+    private void Start()
+    {
+        SetClamp(40, 40);
+    }
+
     private void Update()
     {
         Horizon();

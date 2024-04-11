@@ -6,7 +6,7 @@ public class PlayerStat : MonoSingleTon<PlayerStat>
 {
     public int Life { get; private set; } = 3;
     public float moveSpeed { get; private set; } = 2.5f;
-    public float JumpPower { get; private set; } = 6f;
+    public float JumpPower { get; private set; } = 8f;
 
     public Vector2 Pos { get; private set; }
 
