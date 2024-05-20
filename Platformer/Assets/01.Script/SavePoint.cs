@@ -6,10 +6,10 @@ public class SavePoint : MonoBehaviour
 { 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerStat player = collision.GetComponent<PlayerStat>();
-        if(player)
-        {
+        //PlayerStat player = collision.GetComponent<PlayerStat>();
+        //if(player)
+        //{
             
-        }
+        //}
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-public class SecneManager : MonoSingleTon<SecneManager>
+public class SecneManager : Singleton<SecneManager>
 {
     public int GetSeceneNum()
     {

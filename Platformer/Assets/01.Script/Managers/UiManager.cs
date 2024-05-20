@@ -22,14 +22,14 @@ public class UiManager : MonoBehaviour
     }
     private void LifeUi()
     {
-        for (int i = 0; i < lifes.Length; i++)
-        {
-            lifes[i].enabled = false;
-        }
-        for (int i = 0; i < PlayerStat.Instance.Life; i++)
-        {
-            lifes[i].enabled = true;
-        }
+        //for (int i = 0; i < lifes.Length; i++)
+        //{
+        //    lifes[i].enabled = false;
+        //}
+        //for (int i = 0; i < PlayerStat.Instance.Life; i++)
+        //{
+        //    lifes[i].enabled = true;
+        //}
     }
 
     private void ClampText()

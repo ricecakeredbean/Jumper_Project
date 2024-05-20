@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoSingleTon<StageManager>
+public class StageManager : Singleton<StageManager>
 {
     public int Score { get; private set; }
     public float Sec { get; private set; }
