@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class UnitMoveController<T> : MonoBehaviour where T : UnitController
 {
     protected T unitController;
 
-    public Vector2 MoveDir { get; protected set; }
+    public Vector2 MoveDIr { get; protected set; }
+
+    protected virtual void Awake()
+    {
+        unitController = GetComponent<T>();
+    }
 
     protected virtual void FixedUpdate()
     {
-        MoveDir = GetMoveDirection();
+        MoveDIr = GetMoveDirection();
         if (IsCanMove())
         {
-            unitController.UnitSpriteRendere.flipX = MoveDir.x < 0;
+            unitController.UnitSpriteRendere.flipX = MoveDIr.x < 0;
             UnitMove();
         }
     }

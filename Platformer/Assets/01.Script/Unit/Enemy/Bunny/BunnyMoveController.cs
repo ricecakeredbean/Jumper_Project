@@ -21,12 +21,12 @@ public class BunnyMoveController : UnitMoveController<EnemyController>
 
     protected override bool IsCanMove()
     {
-        return MoveDir != Vector2.zero && IsGround() && IsWall();
+        return MoveDIr != Vector2.zero && IsGround() && IsWall();
     }
 
     private bool IsGround()
     {
-        RaycastHit2D rayHit = Physics2D.Raycast((Vector2)transform.position + MoveDir * unitController.Speed, Vector2.down, 0.2f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHit = Physics2D.Raycast((Vector2)transform.position + MoveDIr * unitController.Speed, Vector2.down, 0.2f, LayerMask.GetMask("Platform"));
         if (rayHit.collider == null)
         {
             return false;
@@ -37,7 +37,7 @@ public class BunnyMoveController : UnitMoveController<EnemyController>
 
     private bool IsWall()
     {
-        RaycastHit2D rayHit = Physics2D.Raycast((Vector2)transform.position + Vector2.up + MoveDir * unitController.Speed, Vector2.one, 0.2f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHit = Physics2D.Raycast((Vector2)transform.position + Vector2.up + MoveDIr * unitController.Speed, Vector2.one, 0.2f, LayerMask.GetMask("Platform"));
         if (rayHit.collider == null)
         {
             return false;
@@ -47,6 +47,6 @@ public class BunnyMoveController : UnitMoveController<EnemyController>
 
     protected override void UnitMove()
     {
-        transform.Translate(MoveDir * unitController.Speed * Time.deltaTime);
+        transform.Translate(MoveDIr * unitController.Speed * Time.deltaTime);
     }
 }

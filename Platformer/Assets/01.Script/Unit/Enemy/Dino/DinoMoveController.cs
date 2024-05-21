@@ -28,7 +28,7 @@ public class DinoMoveController : UnitMoveController<EnemyController>
 
     protected override bool IsCanMove()
     {
-        return MoveDir != Vector2.zero;
+        return MoveDIr != Vector2.zero;
     }
 
     protected override void UnitMove()
