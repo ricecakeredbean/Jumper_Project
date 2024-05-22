@@ -5,24 +5,28 @@ using System;
 
 public abstract class UnitMoveController<T> : MonoBehaviour where T : UnitController
 {
-    protected T unitController;
+    protected T unit;
 
     public Vector2 MoveDIr { get; protected set; }
+    public bool IsJumping { get; protected set; }
 
     protected virtual void Awake()
     {
-        unitController = GetComponent<T>();
+        unit = GetComponent<T>();
     }
 
     protected virtual void FixedUpdate()
     {
         MoveDIr = GetMoveDirection();
+        AnimationUpdate();
         if (IsCanMove())
         {
-            unitController.UnitSpriteRendere.flipX = MoveDIr.x < 0;
+            unit.UnitSpriteRendere.flipX = MoveDIr.x < 0;
             UnitMove();
         }
     }
+
+    protected abstract void AnimationUpdate();
 
     protected abstract bool IsCanMove();
 

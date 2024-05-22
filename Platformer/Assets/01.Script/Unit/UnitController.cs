@@ -11,9 +11,12 @@ public class UnitController : MonoBehaviour
 
     public SpriteRenderer UnitSpriteRendere { get; private set; }
 
+    public UnitAnimatorController AnimatorController { get; private set; }
+
     private void Awake()
     {
         UnitRigidibody = GetComponent<Rigidbody2D>();
         UnitSpriteRendere = GetComponent<SpriteRenderer>();
+        AnimatorController = GetComponent<UnitAnimatorController>();
     }
 }
