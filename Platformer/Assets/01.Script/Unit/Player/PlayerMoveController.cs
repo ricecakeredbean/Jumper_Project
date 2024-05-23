@@ -6,8 +6,6 @@ public class PlayerMoveController : UnitMoveController<PlayerController>
 {
     private bool IsClim;
 
-    private bool IsWallJump;
-
     private void Climwall()
     {
         Vector2 velocity = unit.UnitRigidibody.velocity;
@@ -23,19 +21,19 @@ public class PlayerMoveController : UnitMoveController<PlayerController>
 
     private bool IsGround()
     {
-        RaycastHit2D hitGround = Physics2D.Raycast(transform.position, -transform.up, 1.5f, LayerMask.GetMask("Platform"));
+        RaycastHit2D hitGround = Physics2D.Raycast(transform.position, -transform.up * unit.UnitRigidibody.gravityScale, 1.5f, LayerMask.GetMask("Platform"));
         return hitGround;
     }
 
-    private bool IsWall()
+    private bool IsFrontWall()
     {
-        RaycastHit2D hitWall = Physics2D.Raycast(transform.position + new Vector3(MoveDIr.x, -1.25f), Vector3.down * unit.UnitRigidibody.gravityScale, 0.25f, LayerMask.GetMask("Platform"));
+        RaycastHit2D hitWall = Physics2D.Raycast(transform.position, MoveDIr, 0.75f, LayerMask.GetMask("Platform"));
         return hitWall;
     }
 
     private void UnitJump()
     {
-        unit.UnitRigidibody.AddForce(transform.up * unit.JumpPower, ForceMode2D.Impulse);
+        unit.UnitRigidibody.AddForce(transform.up * unit.UnitRigidibody.gravityScale * unit.JumpPower, ForceMode2D.Impulse);
     }
 
     private void Update()
@@ -59,7 +57,7 @@ public class PlayerMoveController : UnitMoveController<PlayerController>
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        IsClim = !IsGround() && IsWall();
+        IsClim = !IsGround() && IsFrontWall();
         if (IsClim)
         {
             Climwall();
